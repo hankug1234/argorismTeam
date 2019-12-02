@@ -1,15 +1,16 @@
 package term;
 
 import java.util.*;
-import java.awt.*;
-import javax.swing.*;
 
-public class Animation implements Runnable {
+import javax.swing.ImageIcon;
+import javax.swing.JTextArea;
+
+public class Animation2 implements Runnable {
+
 	ImageIcon r_cir,b_cir;
 	JTextArea result;
 	
-	
-	public Animation(ImageIcon r_cir,ImageIcon b_cir, JTextArea result)
+	public Animation2(ImageIcon r_cir,ImageIcon b_cir, JTextArea result)
 	{
 		this.r_cir = r_cir;
 		this.b_cir = b_cir;
@@ -19,18 +20,20 @@ public class Animation implements Runnable {
 	
 	public void run()
 	{
-        int k = randomRange(1,4);
-		
-		LinkedList<Data> list2 = Senario.generateClient(k);
-		
 		double timeCount=0.0;
 		double totalPrice = 0.0;
 		
-		LimitBound run2 = new LimitBound(list2,26);
+       int k = randomRange(1,4);
+		
+		
+		LinkedList<Data> list2 = Senario.generateClient(k);
+		
+		
+		GrideAccept run2 = new GrideAccept(list2,26);
 		
 		Schedule re2 = run2.run();
 		
-		Senario.selectClient(run2, re2, r_cir,result);
+		Senario.selectClient2(run2, re2, r_cir,result);
 		
 		System.out.println("");
 		for(int i=0;i<re2.client.size();i++)
@@ -108,7 +111,7 @@ public class Animation implements Runnable {
 			
 			re2 = run2.run();
 			
-			Senario.selectClient(run2, re2, r_cir,result);
+			Senario.selectClient2(run2, re2, r_cir,result);
 			
 			System.out.println("");
 			for(int i=0;i<re2.client.size();i++)
@@ -135,7 +138,7 @@ public class Animation implements Runnable {
 			
 			try {
 
-				Thread.sleep(500);
+				Thread.sleep(1000);
 
 				} catch (InterruptedException m) {
 
@@ -195,7 +198,7 @@ public class Animation implements Runnable {
 			re2.client = in;
 			try {
 
-				Thread.sleep(500);
+				Thread.sleep(1000);
 
 				} catch (InterruptedException m) {
 
@@ -208,6 +211,4 @@ public class Animation implements Runnable {
 	public static int randomRange(int n1, int n2) {
 	    return (int) (Math.random() * (n2 - n1 + 1)) + n1;
 	  }
-		
-
 }

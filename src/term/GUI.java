@@ -22,6 +22,7 @@ public class GUI extends JFrame {
     static Table[] tables= new Table[4]; 
     static Chairs[] chairs = new Chairs[10];
     static double wstate;
+  
     
     public GUI(String title) {
     	super(title);
@@ -190,9 +191,15 @@ public class GUI extends JFrame {
     		@Override
     		public void actionPerformed(ActionEvent e) {
     			result.append("Clicked!\n");
-    			Thread t = new Thread(new Animation(r_cir,b_cir,result));
+    			
+    			Thread t = new Thread(new Animation2(r_cir,b_cir,result));
     			t.start();
     			
+    			
+    			/*
+    			Thread t = new Thread(new Animation(r_cir,b_cir,result));
+    			t.start();
+    			*/
     		}
     		
     	};
@@ -224,6 +231,7 @@ public class GUI extends JFrame {
 	      
 
 	}
+    
 
 	public static void main(String[] args) {
 		new GUI("Algorithm");
