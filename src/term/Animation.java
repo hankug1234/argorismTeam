@@ -17,6 +17,8 @@ public class Animation implements Runnable {
 	
 	public void run()
 	{
+		double timeCount=0.0;
+		double totalPrice = 0.0;
 		int k = randomRange(1,4);
 		
 		
@@ -55,9 +57,10 @@ public class Animation implements Runnable {
 				if(box.time<=0.0)
 				{
 					box.removeState = true;
+					totalPrice+=box.price;
 				}
 			}
-			
+			timeCount+=1.0;
 			for(int j=0;j<size;j++)
 			{
 				Data box = re2.client.get(j);
@@ -150,9 +153,10 @@ public class Animation implements Runnable {
 				if(box.time<=0.0)
 				{
 					box.removeState = true;
+					totalPrice+=box.price;
 				}
 			}
-			
+			timeCount+=1.0;
 			for(int j=0;j<size;j++)
 			{
 				Data box = re2.client.get(j);
@@ -196,7 +200,7 @@ public class Animation implements Runnable {
 
 				}
 		}
-		
+		result.append("\n totalTime: "+timeCount+" totalPrice: "+totalPrice+"\n");
 	}
 	
 	public static int randomRange(int n1, int n2) {
